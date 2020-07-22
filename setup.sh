@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ZETUP_PKG_LOCATION=${ZETUP_PKG_LOCATION:-"${HOME}/zetup-pkg-ubuntu"}
+ZETUP_PKG_LOCATION="${HOME}/zetup-pkg-ubuntu"
 
 apt_installations=(
   "tmux"
@@ -24,11 +24,27 @@ snap_installations=(
 
 sudo snap install "$pkg"
 
-link "${ZETUP_PKG_LOCATION}/dotfiles/bashrc.sh" "$HOME/.bashrc"
-link "${ZETUP_PKG_LOCATION}/dotfiles/aliases.sh" "$HOME/.aliases"
-link "${ZETUP_PKG_LOCATION}/dotfiles/fns.sh" "$HOME/.fns"
-link "${ZETUP_PKG_LOCATION}/dotfiles/tmux.conf" "$HOME/.tmux.conf"
-link "${ZETUP_PKG_LOCATION}/dotfiles/vimrc" "$HOME/.vimrc"
+backupdir="${HOME}/dotfile_backups"
+mkdir -p ${backupdir}
+
+zetup_link() {
+  backupfile="${backupdir}/${1}"
+  src=${2}
+  symlink=${3}
+  if [ ! -f ${backupfile} ]
+  then
+    mv ${symlink} ${backupfile}
+  else
+    rm ${symlink}
+  fi
+  ln -s src symlink
+}
+
+zetup_link .bashrc "${ZETUP_PKG_LOCATION}/dotfiles/bashrc.sh" "$HOME/.bashrc"
+zetup_link .aliases "${ZETUP_PKG_LOCATION}/dotfiles/aliases.sh" "$HOME/.aliases"
+zetup_link .fns "${ZETUP_PKG_LOCATION}/dotfiles/fns.sh" "$HOME/.fns"
+zetup_link .tmux.conf "${ZETUP_PKG_LOCATION}/dotfiles/tmux.conf" "$HOME/.tmux.conf"
+zetup_link .vimrc "${ZETUP_PKG_LOCATION}/dotfiles/vimrc" "$HOME/.vimrc"
 
 source "$HOME/.bashrc"
 
