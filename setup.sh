@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ZETUP_PKG_LOCATION="${HOME}/zetup-pkg-ubuntu"
+ZETUP_PKG_LOCATION=${ZETUP_PKG_LOCATION:-"${HOME}/zetup-pkg-ubuntu"}
 
 apt_installations=(
   "tmux"
