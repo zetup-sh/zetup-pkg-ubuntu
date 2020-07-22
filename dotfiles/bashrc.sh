@@ -4,21 +4,6 @@ ZETUP_PKG_LOCATION="${HOME}/zetup-pkg-ubuntu"
 source ${ZETUP_PKG_LOCATION}/env
 
 
-# uncomment to install
-subpkg_installations=(
-  # "chrome"
-  # "docker"
-  "git"
-  # "go"
-  # "keyboard-shortcuts"
-  # "kubernetes"
-  # "node"
-  # "ui"
-  # "video"
-  "vim"
-  # "virtualbox"
-  # "vscode"
-)
 
 for subpkg in "${apt_installations[@]}"
 do

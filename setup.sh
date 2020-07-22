@@ -2,7 +2,41 @@
 
 set -eux
 
+
 ZETUP_PKG_LOCATION="${HOME}/zetup-pkg-ubuntu"
+source ${ZETUP_PKG_LOCATION}/env
+
+getifnotset() {
+  description=${2}
+  if [ ! -n  "${!1}" ]
+  then
+    echo "enter ${description}"
+    read -e var
+    export ${1}=$var
+  fi
+}
+
+if [ ! -n "$(git config user.name)" ]
+then
+  getifnotset GIT_NAME "your git user.name"
+  git config --global user.name ${GIT_NAME}
+fi
+
+if [ ! -n "$(git config user.email)" ]
+then
+  getifnotset GIT_NAME "your git user.email"
+  git config --global user.email ${GIT_EMAIL}
+fi
+
+if [ ! -f ${HOME}/.ssh/authorized_keys ]
+then
+  mkdir -p ${HOME}/.ssh
+  getifnotset GITHUB_USERNAME "your github username"
+  curl https://github.com/${GITHUB_USERNAME}.keys -o ${HOME}/.ssh/authorized_keys
+  chmod 600 ${HOME}/.ssh
+  chmod 700 ${HOME}/.ssh/authorized_keys
+fi
+
 
 apt_installations=(
   "tmux"
@@ -57,23 +91,7 @@ zetup_link .vimrc "${ZETUP_PKG_LOCATION}/dotfiles/vimrc" "$HOME/.vimrc"
 source "$HOME/.bashrc"
 
 
-# uncomment to install Note: also need to edit /dotfiles/bashrc.sh
-subpkg_installations=(
-  # "chrome"
-  # "docker"
-  "git"
-  # "go"
-  # "keyboard-shortcuts"
-  # "kubernetes"
-  # "node"
-  # "ui"
-  # "video"
-  "vim"
-  # "virtualbox"
-  # "vscode"
-)
-
-for pkg in "${apt_installations[@]}"
+for pkg in "${subpkg_installations[@]}"
 do
   ZETUP_PKG_LOCATION=${ZETUP_PKG_LOCATION} bash ${ZETUP_PKG_LOCATION}/subpkg/${pkg}/setup.sh
 done

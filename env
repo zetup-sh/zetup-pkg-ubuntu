@@ -1,2 +1,18 @@
-GITHUB_USERNAME=zwhitchcox
-GITHUB_EMAIL=zwhitchcox@gmail.com
+GITHUB_USERNAME=
+GIT_EMAIL=
+GIT_NAME=
+# uncomment to install
+subpkg_installations=(
+  # "chrome"
+  # "docker"
+  "git"
+  # "go"
+  # "keyboard-shortcuts"
+  # "kubernetes"
+  # "node"
+  # "ui"
+  # "video"
+  "vim"
+  # "virtualbox"
+  # "vscode"
+)
