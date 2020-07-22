@@ -10,3 +10,4 @@ done
 rm -rf ${ZETUP_PKG_LOCATION} 
 rm -rf ~/init.sh*
 rm -rf ${backupdir}
+cd ${HOME}

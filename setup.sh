@@ -41,11 +41,11 @@ zetup_link() {
   symlink=${3}
   if [ ! -f ${backupfile} ]
   then
-    mv ${symlink} ${backupfile}
+    ! mv ${symlink} ${backupfile}
   else
-    rm ${symlink}
+    ! rm -f ${symlink}
   fi
-  ln -s src symlink
+  ln -s ${src} ${symlink}
 }
 
 zetup_link .bashrc "${ZETUP_PKG_LOCATION}/dotfiles/bashrc.sh" "$HOME/.bashrc"
