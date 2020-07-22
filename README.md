@@ -2,11 +2,11 @@
 
 ### To Run
 
-`wget https://github.com/zwhitchcox/zetup-pkg-ubuntu/raw/master/init.sh && source init.sh`
+`wget https://raw.githubusercontent.com/zetup-sh/zetup-pkg-ubuntu/master/init.sh && source init.sh`
 
 OR
 
-`curl https://github.com/zwhitchcox/zetup-pkg-ubuntu/raw/master/init.sh && source init.sh`
+`curl https://raw.githubusercontent.com/zetup-sh/zetup-pkg-ubuntu/master/init.sh && source init.sh`
 
 
 ## What is this?
