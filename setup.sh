@@ -88,7 +88,8 @@ zetup_link .fns "${ZETUP_PKG_LOCATION}/dotfiles/fns.sh" "$HOME/.fns"
 zetup_link .tmux.conf "${ZETUP_PKG_LOCATION}/dotfiles/tmux.conf" "$HOME/.tmux.conf"
 zetup_link .vimrc "${ZETUP_PKG_LOCATION}/dotfiles/vimrc" "$HOME/.vimrc"
 
-source "$HOME/.bashrc"
+mkdir ${HOME}/dev
+source ${HOME}/.bashrc
 
 
 for pkg in "${subpkg_installations[@]}"
