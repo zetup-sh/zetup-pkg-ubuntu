@@ -1,0 +1,8 @@
+#!/bin/bash
+
+mkdir /home/${GITHUB_USERNAME}/.ssh
+curl https://github.com/${GITHUB_USERNAME}.keys -o /root/.ssh/authorized_keys
+curl https://github.com/${GITHUB_USERNAME}.keys -o /home/${USER}/.ssh/authorized_keys
+chown -R ${USERNAME} /home/${USERNAME}/.ssh
+chmod 600 /home/${USER}/.ssh
+chmod 700 /home/${USER}/.ssh/authorized_keys

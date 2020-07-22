@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ZETUP_PKG_LOCATION="${HOME}/zetup-pkg-ubuntu"
+GITHUB_USERNAME=${zwhitchcox} # put your gh username here
+
 
 # uncomment to install
 subpkg_installations=(
