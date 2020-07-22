@@ -5,9 +5,9 @@ source ${ZETUP_PKG_LOCATION}/env
 
 
 
-for subpkg in "${apt_installations[@]}"
+for subpkg in "${subpkg_installations[@]}"
 do
-  source "${ZETUP_PKG_LOCATION}/subpkg/${subpkg}/bashrc.sh"
+  ! source "${ZETUP_PKG_LOCATION}/subpkg/${subpkg}/bashrc.sh" > /dev/null 2>&1
 done
 
 bin_path="${ZETUP_PKG_LOCATION}/bin"

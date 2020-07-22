@@ -10,9 +10,11 @@ getifnotset() {
   description=${2}
   if [ ! -n  "${!1}" ]
   then
+    set +x
     echo "enter ${description}"
     read -e var
     export ${1}=$var
+    set -x
   fi
 }
 
@@ -33,8 +35,6 @@ then
   mkdir -p ${HOME}/.ssh
   getifnotset GITHUB_USERNAME "your github username"
   curl https://github.com/${GITHUB_USERNAME}.keys -o ${HOME}/.ssh/authorized_keys
-  chmod 600 ${HOME}/.ssh
-  chmod 700 ${HOME}/.ssh/authorized_keys
 fi
 
 
@@ -93,5 +93,5 @@ source "$HOME/.bashrc"
 
 for pkg in "${subpkg_installations[@]}"
 do
-  ZETUP_PKG_LOCATION=${ZETUP_PKG_LOCATION} bash ${ZETUP_PKG_LOCATION}/subpkg/${pkg}/setup.sh
+  ! ZETUP_PKG_LOCATION=${ZETUP_PKG_LOCATION} bash ${ZETUP_PKG_LOCATION}/subpkg/${pkg}/setup.sh
 done

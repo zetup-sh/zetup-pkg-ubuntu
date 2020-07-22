@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # UltiSnips
-cp -r "${ZETUP_SUB_PKG_LOCATION}/UltiSnips" "$HOME/.vim"
+# cp -r "${ZETUP_SUB_PKG_LOCATION}/UltiSnips" "$HOME/.vim"
 
 # YouCompleteMe
 # curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
