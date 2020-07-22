@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ZETUP_PKG_LOCATION="${HOME}/zetup-pkg-ubuntu"
-GITHUB_USERNAME=${zwhitchcox} # put your gh username here
+source ${ZETUP_PKG_LOCATION}/env
 
 
 # uncomment to install
