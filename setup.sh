@@ -18,13 +18,19 @@ apt_installations=(
   "net-tools"
 )
 sudo apt update
-sh -c "sudo apt install $to_install -yqq" && \
+for pkg in "${apt_installations[@]}"
+do
+  sh -c "sudo apt install ${pkg} -yqq"
+done
 
 snap_installations=(
   "yq"
 )
 
-sudo snap install "$pkg"
+for pkg in "${snap_installations[@]}"
+do
+  sudo snap install "$pkg"
+done
 
 backupdir="${HOME}/dotfile_backups"
 mkdir -p ${backupdir}
