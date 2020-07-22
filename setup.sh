@@ -10,11 +10,11 @@ getifnotset() {
   description=${2}
   if [ ! -n  "${!1}" ]
   then
-    set +x
+    set +eux
     echo "enter ${description}"
     read -e var
     export ${1}=$var
-    set -x
+    set -eux
   fi
 }
 
@@ -26,7 +26,7 @@ fi
 
 if [ ! -n "$(git config user.email)" ]
 then
-  getifnotset GIT_NAME "your git user.email"
+  getifnotset GIT_EMAIL "your git user.email"
   git config --global user.email ${GIT_EMAIL}
 fi
 
