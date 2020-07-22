@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eux
+
 ZETUP_PKG_LOCATION="${HOME}/zetup-pkg-ubuntu"
 
 apt_installations=(
