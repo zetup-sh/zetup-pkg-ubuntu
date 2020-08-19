@@ -15,7 +15,7 @@ fi
 # install node if not already
 if [ ! -x "$(command -v node)" ]
 then
-nvm install node
+nvm install 12
 sudo ln -s $(which npm) /usr/bin/npm
 sudo ln -s $(which node) /usr/bin/node
 fi
