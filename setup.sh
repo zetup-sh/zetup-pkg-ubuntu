@@ -90,7 +90,10 @@ zetup_link .vimrc "${ZETUP_PKG_LOCATION}/dotfiles/vimrc" "$HOME/.vimrc"
 
 mkdir -p ${HOME}/dev
 source ${HOME}/.bashrc
-
+subpkg_installations=(
+  "vscode"
+  "vim"
+)
 
 for pkg in "${subpkg_installations[@]}"
 do
